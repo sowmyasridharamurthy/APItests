@@ -63,7 +63,7 @@ it('User should be allowed to create a new post', () => {
          .expect('Content-Type', /json/)
          .expect(201)
          .then((data) => {
-         console.log(data.body)
+         //console.log(data.body)
          expect(data.body.id).to.not.be.null
          } )
         
