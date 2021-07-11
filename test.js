@@ -17,7 +17,17 @@ it('Compare users output JSON structure', () => {
      .expect(200)
      .expect('Content-Type', /json/) 
      .then(( res) => { 
-         expect(helper.compareOutput(usersJson,res.body)).to.be.true;
+         expect(helper.compareOutput(usersJson,res.body)).to.be.false;
+     });
+ });
+
+ it('API should return empty object of user does not exist', () => {
+    return request
+     .get('/users?username=userDoesNotExist')
+     .expect(200)
+     .expect('Content-Type', /json/) 
+     .then(( res) => { 
+        expect(res.body).to.be.empty;
      });
  });
 
@@ -35,7 +45,7 @@ it('Compare users output JSON structure', () => {
       });
   });
 
-  it('verify the posts made by specific user-Delphine', () => {
+  it('Get all the  posts made by specific user-Delphine', () => {
       let postUrl = `/posts?userId=${ID}`
     return request
      .get(postUrl)
@@ -57,6 +67,7 @@ it('Validate email address in comment for specific user', () => {
      .expect(200)
      .then((data) => {
       for(let i = 0 ; i< data.body.length; i++){
+          expect(data.body[i].email).to.be.not.null;
           if(helper.validateEmail(data.body[i].email)) { }
           else{return false} 
           };
@@ -84,14 +95,7 @@ it('User should be allowed to create a new post', () => {
     });
        
 
-    it('Delete a comment', () => {
-        fetch('https://jsonplaceholder.typicode.com/posts/1', {
-        method: 'DELETE',
-
-    });
-
-    })
-      
+  
 
 
 })
