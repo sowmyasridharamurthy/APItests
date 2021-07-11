@@ -52,5 +52,5 @@ workflows:
                 - master
                 - beta
     jobs:
-      - test_coverage
+      - npm test_coverage
     
