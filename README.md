@@ -7,17 +7,17 @@ A simple javascript API test framework to execute tests on the sample API's defi
 
 <h2> Pre-requisite </h2>
   
-  Any code editor (e.g visual studio code)
-  Install node
-  Install Git
+  1. Any code editor (e.g visual studio code)
+  2. Install node (https://nodejs.org/en/download/current/)
+  3. Install Git (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   
   
 <h2>How to execute?</h2>
   
   1. Clone the code from github
   2. CD to the folder APItests
-  3. npm init
-  4. execute command 'npm test'
+  3. npm i
+  4. Execute test command 'npm test'
   
   <h2>Test Report</h2>
   The tests are executed and the standard Mocha test report is displayed. 
