@@ -52,5 +52,5 @@ workflows:
                 - master
                 - beta
     jobs:
-      - coverage
+      - test_coverage
     
