@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
+    "test_coverage": "nyc mocha",
     "allure-report": "allure generate ./allure-results -c && allure open"
   },
   "author": "",
@@ -13,6 +14,7 @@
     "allure-mocha": "^2.0.0-beta.9",
     "chai": "^4.3.4",
     "mocha": "^9.0.2",
+    "nyc": "^15.1.0",
     "supertest": "^6.1.3"
   },
   "dependencies": {
