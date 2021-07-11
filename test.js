@@ -1,17 +1,16 @@
 import supertest from 'supertest';
-const request = supertest('https://jsonplaceholder.typicode.com');
 import {expect} from 'chai';
 import support from './utility/support';
 import {usersJson} from './utility/constant'
+var tags = require('mocha-tags');
 const fetch = require("node-fetch");
 const helper = new support();
-
+const request = supertest('https://jsonplaceholder.typicode.com');
 var ID;
 
 describe('API tests', () => {
 
-    
-it('Compare users output JSON structure', () => {
+tags('get1').it('Compare users output JSON structure', () => {
     return request
      .get('/users')
      .expect(200)
@@ -21,7 +20,7 @@ it('Compare users output JSON structure', () => {
      });
  });
 
- it('API should return empty object of user does not exist', () => {
+ tags('get').it('API should return empty object of user does not exist', () => {
     return request
      .get('/users?username=userDoesNotExist')
      .expect(200)
@@ -32,7 +31,7 @@ it('Compare users output JSON structure', () => {
  });
 
 
-  it('Search user with specific username and capture ID', () => {
+ tags('get').it('Search user with specific username and capture ID', () => {
      return request
       .get('/users?username=Delphine')
       .expect(200)
@@ -45,7 +44,7 @@ it('Compare users output JSON structure', () => {
       });
   });
 
-  it('Get all the  posts made by specific user-Delphine', () => {
+  tags('post').it('Get all the  posts made by specific user-Delphine', () => {
       let postUrl = `/posts?userId=${ID}`
     return request
      .get(postUrl)
@@ -60,7 +59,7 @@ it('Compare users output JSON structure', () => {
      });
  });
 
-it('Validate email address in comment for specific user', () => {
+ tags('get').it('Validate email address in comment for specific user', () => {
     var url = `/posts/${ID}/comments`;
     return request
      .get(url)
@@ -76,7 +75,7 @@ it('Validate email address in comment for specific user', () => {
      });
 
 
-it('User should be allowed to create a new post', () => {
+     tags('post').it('User should be allowed to create a new post', () => {
         return request
         .post('/posts')
         .send({
