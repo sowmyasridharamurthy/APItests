@@ -2,17 +2,31 @@ import supertest from 'supertest';
 const request = supertest('https://jsonplaceholder.typicode.com');
 import {expect} from 'chai';
 import support from './utility/support';
+import {usersJson} from './utility/constant'
 const fetch = require("node-fetch");
 const helper = new support();
 
+var ID;
 
 describe('API tests', () => {
-var ID;
+
+    
+it('Compare users output JSON structure', () => {
+    return request
+     .get('/users')
+     .expect(200)
+     .expect('Content-Type', /json/) 
+     .then(( res) => { 
+         expect(helper.compareOutput(usersJson,res.body)).to.be.true;
+     });
+ });
+
 
   it('Search user with specific username and capture ID', () => {
      return request
       .get('/users?username=Delphine')
       .expect(200)
+      .expect('Content-Type', /json/) 
       .then(( res) => {
         ID = res.body[0].id
         expect(res.body).to.not.be.empty;  //body should have the value
@@ -21,7 +35,7 @@ var ID;
       });
   });
 
-  it('Check for the posts made by specific user', () => {
+  it('verify the posts made by specific user-Delphine', () => {
       let postUrl = `/posts?userId=${ID}`
     return request
      .get(postUrl)
