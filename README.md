@@ -1,7 +1,7 @@
 # APItests
 API tests using javascript
 
-Description:
+<h2>Description:</h2>
 A simple javascript API test framework to execute tests on the sample API's defined in https://jsonplaceholder.typicode.com/
 
 
@@ -25,5 +25,11 @@ A simple javascript API test framework to execute tests on the sample API's defi
 
 <h3><i>NOTE</i></h3>
 If the API services are instantiated locally, and tests are run then use the command "npm test_coverage", this shall show tabular format of test coverage.
+
+<h2>Circle CI </h2>
+The above API tests are configured in Circle CI for code builds and Nightly executions. 
+link:- https://app.circleci.com/pipelines/github/sowmyasridharamurthy/APItests
+
+
   
 
